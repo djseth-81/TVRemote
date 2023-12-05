@@ -7,8 +7,7 @@ This script houses the object TVRemote to represent the behavior commonly found 
 
 """
 TODO:
-- update testing suite
-- Might include a 2nd window 
+- Might include a 2nd window to simulate the TV
 """
 ### Import packages ###
 from PyQt6.QtWidgets import *
