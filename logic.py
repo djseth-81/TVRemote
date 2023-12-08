@@ -5,10 +5,6 @@
 This script houses the object TVRemote to represent the behavior commonly found on TV remotes. It is called in by the GUI for operation.
 """
 
-"""
-TODO:
-- Might include a 2nd window to simulate the TV
-"""
 ### Import packages ###
 from PyQt6.QtWidgets import *
 from gui import *
@@ -104,8 +100,7 @@ class TVRemote(QMainWindow, RemoteGUI):
         Toggles the status boolean to turn the tv on and off
         """
         self.__status = False if self.powered() else True
-        # print(self.__str__()) # DEBUG
-    
+        
     def mute(self) -> None:
         """
         Toggles the mute boolean to mute and unmute the tv.
@@ -118,8 +113,6 @@ class TVRemote(QMainWindow, RemoteGUI):
                 self.__muted = True
                 self.volumeBar.setProperty("value", 0)
 
-        # print(self.__str__()) # DEBUG
-
     def channel_up(self) -> None:
         """
         Incraments the channel variable until the maximum channel value is reached, after which cycles back to the minimum channel value.
@@ -130,7 +123,6 @@ class TVRemote(QMainWindow, RemoteGUI):
             else:
                 # If on maximum channel value and called again, cycles back to min channel value
                 self.__channel = TVRemote.MIN_CHANNEL
-        # print(self.__str__()) # DEBUG
         
     def channel_down(self) -> None:
         """
@@ -142,7 +134,6 @@ class TVRemote(QMainWindow, RemoteGUI):
             else:
                 # Cycles back to max channel called at min value
                 self.__channel = TVRemote.MAX_CHANNEL
-        # print(self.__str__()) # DEBUG
         
     def volume_up(self) -> None:
         """
@@ -154,7 +145,6 @@ class TVRemote(QMainWindow, RemoteGUI):
                 self.mute()
             if self.__volume < TVRemote.MAX_VOLUME:
                 self.__volume += 1
-        # print(self.__str__()) # DEBUG
         self.volumeBar.setProperty("value", self.getVolume())
     
     def volume_down(self) -> None:
@@ -167,7 +157,6 @@ class TVRemote(QMainWindow, RemoteGUI):
                 self.mute()
             if self.__volume > TVRemote.MIN_VOLUME:
                 self.__volume -= 1
-        # print(self.__str__()) # DEBUG
         self.volumeBar.setProperty("value", self.getVolume())
         
     def set_channel(self, value: int) -> None:
@@ -177,7 +166,6 @@ class TVRemote(QMainWindow, RemoteGUI):
         """
         if self.powered():
             self.__channel = value
-            # print(self.__str__()) # DEBUG
 
     ### Accessors ###
     def powered(self) -> bool:
